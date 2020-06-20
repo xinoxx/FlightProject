@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 指定当前服务\应用的名字 -->
+    <dubbo:application name="ticket-service-provider"></dubbo:application>
+    <!-- 指定注册中心的位置 两种写法 -->
+    <!--<dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>-->
+    <dubbo:registry protocol="zookeeper" address="39.101.208.99:2181"></dubbo:registry>
+
+    <!--指定通信规则 通信协议 通信端口 -->
+    <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
+    
+    <!--暴露服务  ref指向服务真正实现的对象-->
+    <dubbo:service interface="com.flight.service.FlightService" ref="FlightServiceImpl"></dubbo:service>
+
+    <!--服务的实现-->
+    <bean id="FlightServiceImpl" class="com.flight.service.impl.FlightServiceImpl"></bean>
+</beans>
