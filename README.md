@@ -6,3 +6,5 @@ two air ticket provider + one payment provider + one consumer
 maven + dubbo + zookeeper
 
 servlet + jsp + xml
+
+jdbc + dbcp + sql
